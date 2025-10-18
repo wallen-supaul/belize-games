@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #00e6e6;
+  font-family: Arial, sans-serif;
+  transition: margin-left 0.4s ease;
+}
+
+/* Sidebar styling */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 220px;
+  background: #333;
+  overflow-x: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  transform: translateX(-220px); /* Hidden by default */
+  transition: transform 0.4s ease;
+}
+
+/* When active */
+.sidebar.active {
+  transform: translateX(0);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 15px;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  transition: background 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+  background: #06e6e6;
+  color: #000;
+}
+
+/* Toggle button */
+.toggle-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #333;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 1000;
+  transition: background 0.3s;
+}
+
+/* Main Content Centered */
+.main-content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* Centers horizontally */
+  justify-content: center;  /* Centers vertically */
+  text-align: center;
+  transition: margin-left 0.4s ease;
+}
+
+.main-content img {
+  width: 400px;
+  max-width: 90%;
+  height: auto;
+  margin-top: 20px;
+  display: block;
+}
+
+/* Responsive Sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .toggle-btn {
+    top: 15px;
+    left: 15px;
+  }
+
+  .main-content {
+    padding: 100px 20px;
+  }
+}
+
+/* Sidebar footer text */
+.sidebar-footer {
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
+  color: white;
+  font-size: 14px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Hide footer when sidebar is closed */
+.sidebar:not(.active) .sidebar-footer {
+  opacity: 0;
+}
+
